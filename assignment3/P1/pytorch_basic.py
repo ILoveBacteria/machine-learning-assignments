@@ -3,11 +3,11 @@ import torch
 
 
 def hello():
-  """
-  This is a sample function that we will try to import and run to ensure that
-  our environment is correctly set up on Google Colab.
-  """
-  print('Hello from pytorch_basic.py!')
+    """
+    This is a sample function that we will try to import and run to ensure that
+    our environment is correctly set up on Google Colab.
+    """
+    print('Hello from pytorch_basic.py!')
 
 
 def create_sample_tensor():
@@ -234,315 +234,329 @@ def slice_assignment_practice(x):
 
 
 def shuffle_cols(x):
-  """
-  Re-order the columns of an input tensor as described below.
+    """
+    Re-order the columns of an input tensor as described below.
 
-  Your implementation should construct the output tensor using a single integer
-  array indexing operation. The input tensor should not be modified.
+    Your implementation should construct the output tensor using a single integer
+    array indexing operation. The input tensor should not be modified.
 
-  Input:
-  - x: A tensor of shape (M, N) with N >= 3
+    Input:
+    - x: A tensor of shape (M, N) with N >= 3
 
-  Returns: A tensor y of shape (M, 4) where:
-  - The first two columns of y are copies of the first column of x
-  - The third column of y is the same as the third column of x
-  - The fourth column of y is the same as the second column of x
-  """
-  y = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return y
+    Returns: A tensor y of shape (M, 4) where:
+    - The first two columns of y are copies of the first column of x
+    - The third column of y is the same as the third column of x
+    - The fourth column of y is the same as the second column of x
+    """
+    y = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    col = [0, 0, 2, 1]
+    y = x[:, col]
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return y
 
 
 def reverse_rows(x):
-  """
-  Reverse the rows of the input tensor.
+    """
+    Reverse the rows of the input tensor.
 
-  Your implementation should construct the output tensor using a single integer
-  array indexing operation. The input tensor should not be modified.
+    Your implementation should construct the output tensor using a single integer
+    array indexing operation. The input tensor should not be modified.
 
-  Input:
-  - x: A tensor of shape (M, N)
+    Input:
+    - x: A tensor of shape (M, N)
 
-  Returns: A tensor y of shape (M, N) which is the same as x but with the rows
+    Returns: A tensor y of shape (M, N) which is the same as x but with the rows
            reversed; that is the first row of y is equal to the last row of x,
            the second row of y is equal to the second to last row of x, etc.
-  """
-  y = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return y
+    """
+    y = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    ind = torch.arange(x.shape[0]-1, -1, -1)
+    y = x[ind, :]
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return y
 
 
 def take_one_elem_per_col(x):
-  """
-  Construct a new tensor by picking out one element from each column of the
-  input tensor as described below.
+    """
+    Construct a new tensor by picking out one element from each column of the
+    input tensor as described below.
 
-  The input tensor should not be modified.
+    The input tensor should not be modified.
 
-  Input:
-  - x: A tensor of shape (M, N) with M >= 4 and N >= 3.
+    Input:
+    - x: A tensor of shape (M, N) with M >= 4 and N >= 3.
 
-  Returns: A tensor y of shape (3,) such that:
-  - The first element of y is the second element of the first column of x
-  - The second element of y is the first element of the second column of x
-  - The third element of y is the fourth element of the third column of x
-  """
-  y = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return y
+    Returns: A tensor y of shape (3,) such that:
+    - The first element of y is the second element of the first column of x
+    - The second element of y is the first element of the second column of x
+    - The third element of y is the fourth element of the third column of x
+    """
+    y = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    row = [1, 0, 3]
+    col = [0, 1, 2]
+    y = x[row, col]
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return y
 
 
 def count_negative_entries(x):
-  """
-  Return the number of negative values in the input tensor x.
+    """
+    Return the number of negative values in the input tensor x.
 
-  Your implementation should perform only a single indexing operation on the
-  input tensor. You should not use any explicit loops. The input tensor should
-  not be modified.
+    Your implementation should perform only a single indexing operation on the
+    input tensor. You should not use any explicit loops. The input tensor should
+    not be modified.
 
-  Input:
-  - x: A tensor of any shape
+    Input:
+    - x: A tensor of any shape
 
-  Returns:
-  - num_neg: Integer giving the number of negative values in x
-  """
-  num_neg = 0
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return num_neg
+    Returns:
+    - num_neg: Integer giving the number of negative values in x
+    """
+    num_neg = 0
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    num_neg = len(x[x < 0])
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return num_neg
 
 
 def make_one_hot(x):
-  """
-  Construct a tensor of one-hot-vectors from a list of Python integers.
+    """
+    Construct a tensor of one-hot-vectors from a list of Python integers.
 
-  Input:
-  - x: A list of N integers
+    Input:
+    - x: A list of N integers
 
-  Returns:
-  - y: A tensor of shape (N, C) and where C = 1 + max(x) is one more than the max
+    Returns:
+    - y: A tensor of shape (N, C) and where C = 1 + max(x) is one more than the max
        value in x. The nth row of y is a one-hot-vector representation of x[n];
        In other words, if x[n] = c then y[n, c] = 1; all other elements of y are
        zeros. The dtype of y should be torch.float32.
-  """
-  y = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return y
+    """
+    y = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    m = max(x)
+    y = torch.zeros((len(x), m+1))
+    y[torch.arange(0, len(x)), x] = 1
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return y
 
 
 def reshape_practice(x):
-  """
-  Given an input tensor of shape (24,), return a reshaped tensor y of shape
-  (3, 8) such that
+    """
+    Given an input tensor of shape (24,), return a reshaped tensor y of shape
+    (3, 8) such that
 
-  y = [
+    y = [
     [x[0], x[1], x[2],  x[3],  x[12], x[13], x[14], x[15]],
     [x[4], x[5], x[6],  x[7],  x[16], x[17], x[18], x[19]],
     [x[8], x[9], x[10], x[11], x[20], x[21], x[22], x[23]],
-  ]
+    ]
 
-  You must construct y by performing a sequence of reshaping operations on x
-  (view, t, transpose, permute, contiguous, reshape, etc). The input tensor
-  should not be modified.
+    You must construct y by performing a sequence of reshaping operations on x
+    (view, t, transpose, permute, contiguous, reshape, etc). The input tensor
+    should not be modified.
 
-  Input:
-  - x: A tensor of shape (24,)
+    Input:
+    - x: A tensor of shape (24,)
 
-  Returns:
-  - y: A reshaped version of x of shape (3, 8) as described above.
-  """
-  y = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return y
+    Returns:
+    - y: A reshaped version of x of shape (3, 8) as described above.
+    """
+    y = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    y = x.reshape(2, 3, -1)
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return y
 
 
 def zero_row_min(x):
-  """
-  Return a copy of x, where the minimum value along each row has been set to 0.
+    """
+    Return a copy of x, where the minimum value along each row has been set to 0.
 
-  For example, if x is:
-  x = torch.tensor([[
+    For example, if x is:
+    x = torch.tensor([[
         [10, 20, 30],
         [ 2,  5,  1]
       ]])
 
-  Then y = zero_row_min(x) should be:
-  torch.tensor([
+    Then y = zero_row_min(x) should be:
+    torch.tensor([
     [0, 20, 30],
     [2,  5,  0]
-  ])
+    ])
 
-  Your implementation should use reduction and indexing operations; you should
-  not use any explicit loops. The input tensor should not be modified.
+    Your implementation should use reduction and indexing operations; you should
+    not use any explicit loops. The input tensor should not be modified.
 
-  Inputs:
-  - x: Tensor of shape (M, N)
+    Inputs:
+    - x: Tensor of shape (M, N)
 
-  Returns:
-  - y: Tensor of shape (M, N) that is a copy of x, except the minimum value
+    Returns:
+    - y: Tensor of shape (M, N) that is a copy of x, except the minimum value
        along each row is replaced with 0.
-  """
-  y = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return y
+    """
+    y = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    _, index = x.min(dim=1)
+    y = x.clone()
+    y[torch.arange(0, x.shape[0]), index] = 0
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return y
 
 
 def batched_matrix_multiply(x, y, use_loop=True):
-  """
-  Perform batched matrix multiplication between the tensor x of shape (B, N, M)
-  and the tensor y of shape (B, M, P).
+    """
+    Perform batched matrix multiplication between the tensor x of shape (B, N, M)
+    and the tensor y of shape (B, M, P).
 
-  If use_loop=True, then you should use an explicit loop over the batch
-  dimension B. If loop=False, then you should instead compute the batched
-  matrix multiply without an explicit loop using a single PyTorch operator.
+    If use_loop=True, then you should use an explicit loop over the batch
+    dimension B. If loop=False, then you should instead compute the batched
+    matrix multiply without an explicit loop using a single PyTorch operator.
 
-  Inputs:
-  - x: Tensor of shape (B, N, M)
-  - y: Tensor of shape (B, M, P)
-  - use_loop: Whether to use an explicit Python loop.
+    Inputs:
+    - x: Tensor of shape (B, N, M)
+    - y: Tensor of shape (B, M, P)
+    - use_loop: Whether to use an explicit Python loop.
 
-  Hint: torch.stack, bmm
+    Hint: torch.stack, bmm
 
-  Returns:
-  - z: Tensor of shape (B, N, P) where z[i] of shape (N, P) is the result of
+    Returns:
+    - z: Tensor of shape (B, N, P) where z[i] of shape (N, P) is the result of
        matrix multiplication between x[i] of shape (N, M) and y[i] of shape
        (M, P). It should have the same dtype as x.
-  """
-  z = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return z
+    """
+    z = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    if use_loop:
+        results = []
+        for i in range(x.shape[0]):
+            results.append(x[i].mm(y[i]))
+        z = torch.stack(results)
+    else:
+        z = torch.bmm(x, y)
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return z
 
 
 def normalize_columns(x):
-  """
-  Normalize the columns of the matrix x by subtracting the mean and dividing
-  by standard deviation of each column. You should return a new tensor; the
-  input should not be modified.
+    """
+    Normalize the columns of the matrix x by subtracting the mean and dividing
+    by standard deviation of each column. You should return a new tensor; the
+    input should not be modified.
 
-  More concretely, given an input tensor x of shape (M, N), produce an output
-  tensor y of shape (M, N) where y[i, j] = (x[i, j] - mu_j) / sigma_j, where
-  mu_j is the mean of the column x[:, j].
+    More concretely, given an input tensor x of shape (M, N), produce an output
+    tensor y of shape (M, N) where y[i, j] = (x[i, j] - mu_j) / sigma_j, where
+    mu_j is the mean of the column x[:, j].
 
-  Your implementation should not use any explicit Python loops (including
-  list/set/etc comprehensions); you may only use basic arithmetic operations on
-  tensors (+, -, *, /, **, sqrt), the sum reduction function, and reshape
-  operations to facilitate broadcasting. You should not use torch.mean,
-  torch.std, or their instance method variants x.mean, x.std.
+    Your implementation should not use any explicit Python loops (including
+    list/set/etc comprehensions); you may only use basic arithmetic operations on
+    tensors (+, -, *, /, **, sqrt), the sum reduction function, and reshape
+    operations to facilitate broadcasting. You should not use torch.mean,
+    torch.std, or their instance method variants x.mean, x.std.
 
-  Input:
-  - x: Tensor of shape (M, N).
+    Input:
+    - x: Tensor of shape (M, N).
 
-  Returns:
-  - y: Tensor of shape (M, N) as described above. It should have the same dtype
+    Returns:
+    - y: Tensor of shape (M, N) as described above. It should have the same dtype
     as the input x.
-  """
-  y = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return y
+    """
+    y = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    pass
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return y
 
 
 def mm_on_cpu(x, w):
-  """
-  (helper function) Perform matrix multiplication on CPU.
-  PLEASE DO NOT EDIT THIS FUNCTION CALL.
+    """
+    (helper function) Perform matrix multiplication on CPU.
+    PLEASE DO NOT EDIT THIS FUNCTION CALL.
 
-  Input:
-  - x: Tensor of shape (A, B), on CPU
-  - w: Tensor of shape (B, C), on CPU
+    Input:
+    - x: Tensor of shape (A, B), on CPU
+    - w: Tensor of shape (B, C), on CPU
 
-  Returns:
-  - y: Tensor of shape (A, C) as described above. It should not be in GPU.
-  """
-  y = x.mm(w)
-  return y
+    Returns:
+    - y: Tensor of shape (A, C) as described above. It should not be in GPU.
+    """
+    y = x.mm(w)
+    return y
 
 
 def mm_on_gpu(x, w):
-  """
-  Perform matrix multiplication on GPU
+    """
+    Perform matrix multiplication on GPU
 
-  Specifically, you should (i) place each input on GPU first, and then
-  (ii) perform the matrix multiplication operation. Finally, (iii) return the
-  final result, which is on CPU for a fair in-place replacement with the mm_on_cpu.
+    Specifically, you should (i) place each input on GPU first, and then
+    (ii) perform the matrix multiplication operation. Finally, (iii) return the
+    final result, which is on CPU for a fair in-place replacement with the mm_on_cpu.
 
-  When you move the tensor to GPU, PLEASE use "your_tensor_intance.cuda()" operation.
+    When you move the tensor to GPU, PLEASE use "your_tensor_intance.cuda()" operation.
 
-  Input:
-  - x: Tensor of shape (A, B), on CPU
-  - w: Tensor of shape (B, C), on CPU
+    Input:
+    - x: Tensor of shape (A, B), on CPU
+    - w: Tensor of shape (B, C), on CPU
 
-  Returns:
-  - y: Tensor of shape (A, C) as described above. It should not be in GPU.
-  """
-  y = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return y
+    Returns:
+    - y: Tensor of shape (A, C) as described above. It should not be in GPU.
+    """
+    y = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    pass
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return y
