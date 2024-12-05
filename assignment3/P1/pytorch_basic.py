@@ -97,128 +97,140 @@ def count_tensor_elements(x):
 
 
 def create_tensor_of_pi(M, N):
-  """
-  Returns a Tensor of shape (M, N) filled entirely with the value 3.14
+    """
+    Returns a Tensor of shape (M, N) filled entirely with the value 3.14
 
-  Inputs:
-  - M, N: Positive integers giving the shape of Tensor to create
+    Inputs:
+    - M, N: Positive integers giving the shape of Tensor to create
 
-  Returns:
-  - x: A tensor of shape (M, N) filled with the value 3.14
-  """
-  x = None
-  #############################################################################
-  #       TODO: Implement this function. It should take one line.             #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return x
+    Returns:
+    - x: A tensor of shape (M, N) filled with the value 3.14
+    """
+    x = None
+    #############################################################################
+    #       TODO: Implement this function. It should take one line.             #
+    #############################################################################
+    # Replace "pass" statement with your code
+    x = torch.full((M, N), 3.14)
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return x
 
 
 def multiples_of_ten(start, stop):
-  """
-  Returns a Tensor of dtype torch.float64 that contains all of the multiples of
-  ten (in order) between start and stop, inclusive. If there are no multiples
-  of ten in this range you should return an empty tensor of shape (0,).
+    """
+    Returns a Tensor of dtype torch.float64 that contains all of the multiples of
+    ten (in order) between start and stop, inclusive. If there are no multiples
+    of ten in this range you should return an empty tensor of shape (0,).
 
-  Inputs:
-  - start, stop: Integers with start <= stop specifying the range to create.
+    Inputs:
+    - start, stop: Integers with start <= stop specifying the range to create.
 
-  Returns:
-  - x: Tensor of dtype float64 giving multiples of ten between start and stop.
-  """
-  assert start <= stop
-  x = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return x
+    Returns:
+    - x: Tensor of dtype float64 giving multiples of ten between start and stop.
+    """
+    assert start <= stop
+    x = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    if stop < 10:
+        x = torch.tensor([])
+    else:
+        x = torch.arange(10, stop, 10)
+    x = x.double()
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return x
 
 
 def slice_indexing_practice(x):
-  """
-  Given a two-dimensional tensor x, extract and return several subtensors to
-  practice with slice indexing. Each tensor should be created using a single
-  slice indexing operation.
+    """
+    Given a two-dimensional tensor x, extract and return several subtensors to
+    practice with slice indexing. Each tensor should be created using a single
+    slice indexing operation.
 
-  The input tensor should not be modified.
+    The input tensor should not be modified.
 
-  Input:
-  - x: Tensor of shape (M, N) -- M rows, N columns with M >= 3 and N >= 5.
+    Input:
+    - x: Tensor of shape (M, N) -- M rows, N columns with M >= 3 and N >= 5.
 
-  Returns a tuple of:
-  - last_row: Tensor of shape (N,) giving the last row of x. It should be a
+    Returns a tuple of:
+    - last_row: Tensor of shape (N,) giving the last row of x. It should be a
     one-dimensional tensor.
-  - third_col: Tensor of shape (M, 1) giving the third column of x.
+    - third_col: Tensor of shape (M, 1) giving the third column of x.
     It should be a two-dimensional tensor.
-  - first_two_rows_three_cols: Tensor of shape (2, 3) giving the data in the
+    - first_two_rows_three_cols: Tensor of shape (2, 3) giving the data in the
     first two rows and first three columns of x.
-  - even_rows_odd_cols: Two-dimensional tensor containing the elements in the
+    - even_rows_odd_cols: Two-dimensional tensor containing the elements in the
     even-valued rows and odd-valued columns of x.
-  """
-  assert x.shape[0] >= 3
-  assert x.shape[1] >= 5
-  last_row = None
-  third_col = None
-  first_two_rows_three_cols = None
-  even_rows_odd_cols = None
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  out = (
+    """
+    assert x.shape[0] >= 3
+    assert x.shape[1] >= 5
+    last_row = None
+    third_col = None
+    first_two_rows_three_cols = None
+    even_rows_odd_cols = None
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    last_row = x[-1]
+    third_col = x[:, 2:3]
+    first_two_rows_three_cols = x[:2, :3]
+    even_rows_odd_cols = x[::2, 1::2]
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    out = (
     last_row,
     third_col,
     first_two_rows_three_cols,
     even_rows_odd_cols,
-  )
-  return out
+    )
+    return out
 
 
 def slice_assignment_practice(x):
-  """
-  Given a two-dimensional tensor of shape (M, N) with M >= 4, N >= 6, mutate its
-  first 4 rows and 6 columns so they are equal to:
+    """
+    Given a two-dimensional tensor of shape (M, N) with M >= 4, N >= 6, mutate its
+    first 4 rows and 6 columns so they are equal to:
 
-  [0 1 2 2 2 2]
-  [0 1 2 2 2 2]
-  [3 4 3 4 5 5]
-  [3 4 3 4 5 5]
+    [0 1 2 2 2 2]
+    [0 1 2 2 2 2]
+    [3 4 3 4 5 5]
+    [3 4 3 4 5 5]
 
-  Your implementation must obey the following:
-  - You should mutate the tensor x in-place and return it
-  - You should only modify the first 4 rows and first 6 columns; all other
+    Your implementation must obey the following:
+    - You should mutate the tensor x in-place and return it
+    - You should only modify the first 4 rows and first 6 columns; all other
     elements should remain unchanged
-  - You may only mutate the tensor using slice assignment operations, where you
+    - You may only mutate the tensor using slice assignment operations, where you
     assign an integer to a slice of the tensor
-  - You must use <= 6 slicing operations to achieve the desired result
+    - You must use <= 6 slicing operations to achieve the desired result
 
-  Inputs:
-  - x: A tensor of shape (M, N) with M >= 4 and N >= 6
+    Inputs:
+    - x: A tensor of shape (M, N) with M >= 4 and N >= 6
 
-  Returns: x
-  """
-  #############################################################################
-  #                    TODO: Implement this function                          #
-  #############################################################################
-  # Replace "pass" statement with your code
-  pass
-  #############################################################################
-  #                            END OF YOUR CODE                               #
-  #############################################################################
-  return x
+    Returns: x
+    """
+    #############################################################################
+    #                    TODO: Implement this function                          #
+    #############################################################################
+    # Replace "pass" statement with your code
+    x[:4, :6] = torch.tensor([
+        [0, 1, 2, 2, 2, 2],
+        [0, 1, 2, 2, 2, 2],
+        [3, 4, 3, 4, 5, 5],
+        [3, 4, 3, 4, 5, 5],
+    ])
+    #############################################################################
+    #                            END OF YOUR CODE                               #
+    #############################################################################
+    return x
 
 
 def shuffle_cols(x):
