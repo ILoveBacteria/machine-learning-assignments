@@ -4,3 +4,4 @@
 __pycache__/
 MNIST/
 *.log
+cifar-10*
